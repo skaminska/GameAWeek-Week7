@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseClick2D : MonoBehaviour
+public class MouseClick2D : Singleton<MouseClick2D>
 {
     [SerializeField] Camera mainCamera;
 
@@ -26,7 +26,12 @@ public class MouseClick2D : MonoBehaviour
             {
                 PlayerController.Instance.SendToWork(hit.collider.GetComponent<Resource>());
             }
-
+            else if (hit.collider.gameObject.tag == "Placement" && !PlacementController.Instance.isActiveAndEnabled)
+            {
+                //hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                PlacementController.Instance.enabled = true;
+                PlacementController.Instance.SetPlacement(hit.collider.gameObject);
+            }
         }
     }
 }
