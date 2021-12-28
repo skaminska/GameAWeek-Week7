@@ -6,22 +6,23 @@ public class WorkerController : MonoBehaviour
 {
     public bool busy;
     Resource currentResource;
-    public enum Owner { Player, Enemy}
     bool gatheringResources;
+    bool removeFromWork;
+
+    public bool unpackingResource;
 
     [SerializeField] string resourceInInventory;
-    //public ResourceInInventory resourceInInventory;
-
-    [SerializeField] public Owner owner;
     [SerializeField] public Transform fort;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        removeFromWork = false;
         busy = false;
         gatheringResources = false;
         resourceInInventory = null;
+        unpackingResource = false;
     }
 
     // Update is called once per frame
@@ -35,7 +36,12 @@ public class WorkerController : MonoBehaviour
             busy = false;
 
         if (transform.position == fort.position && resourceInInventory != null)
+        {
             StartCoroutine(LeftResource());
+        }
+
+        if(!busy)
+            transform.position = Vector2.MoveTowards(transform.position, fort.transform.position, 3 * Time.deltaTime);
 
         if (currentResource!=null && transform.position == currentResource.transform.position && !gatheringResources)
         {
@@ -47,29 +53,49 @@ public class WorkerController : MonoBehaviour
 
     public IEnumerator LeftResource()
     {
+        unpackingResource = true;
         yield return new WaitForSeconds(1);
         PlayerController.Instance.AddResource(resourceInInventory);
         resourceInInventory = null;
+        if(removeFromWork)
+        {
+            RemoveFromWork();
+        }
+        unpackingResource = false;
+    }
+
+    public void RemoveFromWork()
+    {
+        if(resourceInInventory == null)
+        {
+            busy = false;
+            currentResource = null;
+            removeFromWork = false;
+        }
+        else
+        {
+            removeFromWork = true;
+        }
     }
 
     public void SetWork(Resource resource)
     {
         busy = true;
         currentResource = resource;
-        Debug.Log("i am going to collect some " + resource.gameObject.name);
     }
 
     private IEnumerator CollectResource()
     {
         yield return new WaitForSeconds(3);
-        Debug.Log(currentResource.resourceType.ToString());
-        if(currentResource.resourceLeft > 0)
+        if(currentResource !=null)
         {
-            currentResource.resourceLeft--;
             resourceInInventory = currentResource.resourceType.ToString();
-            
         }
         gatheringResources = false;
     }
 
+    public Resource GetWorkerCurrentResource()
+    {
+        return currentResource;
+    }
 }

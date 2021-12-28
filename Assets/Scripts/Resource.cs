@@ -1,17 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-    public int resourceLeft;
-    public enum ResourceType { WOOD, GOLD};
+    //public int resourceLeft;
+    [SerializeField] TextMeshProUGUI currentWorkersText;
+    int currentWorkers;
+
+    private void Start()
+    {
+        currentWorkers = 0;
+    }
+
+    public enum ResourceType { WOOD, GOLD, FOOD};
 
     [SerializeField] public ResourceType resourceType;
 
-    private void Update()
+    public void AddWorker()
     {
-        if (resourceLeft == 0)
-            Destroy(gameObject);
+        currentWorkers++;
+        currentWorkersText.text = currentWorkers.ToString();
     }
+
+    public void RemoveWorker()
+    {
+        if (currentWorkers > 0)
+        {
+            currentWorkers--;
+            currentWorkersText.text = currentWorkers.ToString();
+        }
+    }
+
 }

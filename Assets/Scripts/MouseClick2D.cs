@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,23 @@ public class MouseClick2D : Singleton<MouseClick2D>
         if (Input.GetMouseButtonDown(0))
         {
             CheckIfResources();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            CheckIfResourceToRemoveWorker();
+        }
+    }
+
+    private void CheckIfResourceToRemoveWorker()
+    {
+        Ray2D ray = new Ray2D(mainCamera.ScreenToWorldPoint(Input.mousePosition), transform.forward);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f);
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.tag == "Resources")
+            {
+                PlayerController.Instance.RemoveFromWork(hit.collider.GetComponent<Resource>());
+            }
         }
     }
 
