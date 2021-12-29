@@ -46,7 +46,7 @@ public class WarriorController : MonoBehaviour, IGetDamage
                     }
                 }
 
-                if (Vector3.Distance(fort.transform.position, transform.position) < range)
+                if (Vector3.Distance(fort.transform.position, transform.position) < range+1)
                     target = fort;
 
 

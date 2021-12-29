@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : Singleton<PlayerController>, IGetDamage
 {
@@ -15,6 +16,8 @@ public class PlayerController : Singleton<PlayerController>, IGetDamage
     [SerializeField] GameObject warriorPref;
     [SerializeField] List<Transform> warriorsPath;
     [SerializeField] int healthPoints;
+    [SerializeField] Slider hpSlider;
+
 
     [SerializeField] public int newWorkerRequireGold;
     [SerializeField] public int newWorkerRequireFood;
@@ -114,5 +117,6 @@ public class PlayerController : Singleton<PlayerController>, IGetDamage
     public void GetDamage(int damage)
     {
         healthPoints -= damage;
+        hpSlider.value = healthPoints;
     }
 }

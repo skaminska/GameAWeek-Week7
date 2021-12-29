@@ -12,16 +12,27 @@ public class TowerController : MonoBehaviour
     GameObject currentEnemy;
     float timeToAttack;
 
+    private void Start()
+    {
+        attackProjecttile.transform.localScale = new Vector3(2, 2, 0);
+    }
+
     private void Update()
     {
         if (timeToAttack > 0)
             timeToAttack -= Time.deltaTime;
         if (currentEnemy != null)
-        {
+        {   
+            float n = Mathf.Atan2((currentEnemy.transform.position - transform.position).normalized.y, (currentEnemy.transform.position - transform.position).normalized.x) * Mathf.Rad2Deg;
+                if (n < 0)
+                    n += 360;
+            transform.eulerAngles = new Vector3(0, 0, n);
             if (Vector3.Distance(transform.position, currentEnemy.transform.position) > range)
                 currentEnemy = null;
             if (timeToAttack <= 0)
             {
+
+
                 Attack();
                 timeToAttack = 1;
             }

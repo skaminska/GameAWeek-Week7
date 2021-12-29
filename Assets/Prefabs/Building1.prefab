@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a771034bb82cbcd4b8c63ca549f8e689, type: 3}
-  m_Color: {r: 0.8113208, g: 0.7296662, b: 0.12552504, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e1660ea357babb140b2c5da5378f3e98, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481e4f4b191b0ed46817c13728d0a9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReqiured: 10
+  goldReqiured: 6
   woodRequired: 10
   attackProjecttile: {fileID: 521575416172460354, guid: 79b4158943de0a24dbe033393c7b0854, type: 3}
   range: 4

@@ -45,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
 
-            if (Vector3.Distance(fort.transform.position, transform.position) < range)
+            if (Vector3.Distance(fort.transform.position, transform.position) < range+2)
                 target = fort;
 
 

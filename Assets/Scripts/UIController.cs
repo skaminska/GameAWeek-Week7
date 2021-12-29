@@ -53,4 +53,9 @@ public class UIController : MonoBehaviour
     {
         PlayerController.Instance.Attack();
     }
+
+    public void Exit()
+    {
+        citizensMenu.SetActive(false);
+    }
 }

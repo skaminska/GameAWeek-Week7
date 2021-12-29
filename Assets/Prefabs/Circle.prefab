@@ -98,4 +98,4 @@ MonoBehaviour:
   buildingTypes:
   - {fileID: 4427455901919146163, guid: 085240fb978a2624ebae10f856df1a42, type: 3}
   buildingSprite:
-  - {fileID: 21300000, guid: a771034bb82cbcd4b8c63ca549f8e689, type: 3}
+  - {fileID: 21300000, guid: e1660ea357babb140b2c5da5378f3e98, type: 3}

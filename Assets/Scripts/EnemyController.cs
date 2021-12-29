@@ -9,8 +9,9 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
     [SerializeField] List<Transform> path;
     [SerializeField] GameObject enemy;
     [SerializeField] int healthPoints;
-    [SerializeField] Slider timeSlider; 
+    [SerializeField] Slider timeSlider;
 
+    [SerializeField] Slider hpSlider;
     [SerializeField] public List<GameObject> enemiesList;
 
     [SerializeField] float timeToNewWave;
@@ -68,5 +69,6 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
     public void GetDamage(int damage)
     {
         healthPoints -= damage;
+        hpSlider.value = healthPoints;
     }
 }
