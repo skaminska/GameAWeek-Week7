@@ -3,24 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : Singleton<PlayerController>, IGetDamage
 {
     [SerializeField] public int wood;
     [SerializeField] public int gold;
     [SerializeField] public int food;
     [SerializeField] List<WorkerController> workers;
-    [SerializeField] List<WorkerController> warriors;
+    [SerializeField] public List<WarriorController> warriors;
     [SerializeField] GameObject workerPref;
+    [SerializeField] GameObject warriorPref;
+    [SerializeField] List<Transform> warriorsPath;
+    [SerializeField] int healthPoints;
 
     [SerializeField] public int newWorkerRequireGold;
     [SerializeField] public int newWorkerRequireFood;
 
+    [SerializeField] public int newWarriorRequireGold;
+    [SerializeField] public int newWarriorRequireFood;
+
     // Start is called before the first frame update
     void Start()
     {
-        wood = 0;
-        gold = 0;
-        food = 0;
     }
 
     internal void RemoveFromWork(Resource resource)
@@ -53,6 +56,20 @@ public class PlayerController : Singleton<PlayerController>
             food++;
     }
 
+    internal void BuyNewWarrior()
+    {
+        if (gold >= newWarriorRequireGold && food >= newWarriorRequireFood)
+        {
+            gold -= newWarriorRequireGold;
+            food -= newWarriorRequireFood;
+
+
+            GameObject warrior = Instantiate(warriorPref, transform.position, Quaternion.identity);
+            warrior.GetComponent<WarriorController>().SetPath(warriorsPath);
+            warriors.Add(warrior.GetComponent<WarriorController>());
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Worker")
@@ -81,5 +98,18 @@ public class PlayerController : Singleton<PlayerController>
             worker.GetComponent<WorkerController>().fort = this.transform;
             workers.Add(worker.GetComponent<WorkerController>());
         }
+    }
+
+    public void Attack()
+    {
+        foreach(var warrior in warriors)
+        {
+            warrior.StartAttack();
+        }
+    }
+
+    public void GetDamage(int damage)
+    {
+        healthPoints -= damage;
     }
 }

@@ -6,19 +6,23 @@ using UnityEngine;
 public class MouseClick2D : Singleton<MouseClick2D>
 {
     [SerializeField] Camera mainCamera;
-
+    [SerializeField] GameObject menu;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!menu.activeInHierarchy)
         {
-            CheckIfResources();
+            if (Input.GetMouseButtonDown(0))
+            {
+                CheckIfResources();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                CheckIfResourceToRemoveWorker();
+            }
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            CheckIfResourceToRemoveWorker();
-        }
+
     }
 
     private void CheckIfResourceToRemoveWorker()

@@ -7,12 +7,14 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] GameObject citizensMenu;
     [SerializeField] TextMeshProUGUI workerRequirements;
+    [SerializeField] TextMeshProUGUI warriorRequirements;
     [SerializeField] List<TextMeshProUGUI> infos;
 
     private void Start()
     {
         citizensMenu.SetActive(false);
         workerRequirements.text = PlayerController.Instance.newWorkerRequireGold + "\n" + PlayerController.Instance.newWorkerRequireFood;
+        warriorRequirements.text = PlayerController.Instance.newWarriorRequireGold + "\n" + PlayerController.Instance.newWarriorRequireFood;
         InvokeRepeating("UpdateUIInfo", 0, 0.5f);
     }
 
@@ -41,5 +43,14 @@ public class UIController : MonoBehaviour
     public void BuyNewWorker()
     {
         PlayerController.Instance.BuyNewWorker();
+    }
+    public void BuyNewWarrior()
+    {
+        PlayerController.Instance.BuyNewWarrior();
+    }
+
+    public void Attack()
+    {
+        PlayerController.Instance.Attack();
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4427455901919146163
+--- !u!1 &521575416172460354
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8251432539967776738}
-  - component: {fileID: 7996778109112429398}
-  - component: {fileID: -6954050323850519399}
+  - component: {fileID: 5543388805072559956}
+  - component: {fileID: 7924286520086683470}
+  - component: {fileID: -1277533830579697871}
   m_Layer: 0
-  m_Name: Building1
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8251432539967776738
+--- !u!4 &5543388805072559956
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4427455901919146163}
+  m_GameObject: {fileID: 521575416172460354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3687077, y: -1.0521296, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -10.99, y: 2.01, z: 0}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7996778109112429398
+--- !u!212 &7924286520086683470
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4427455901919146163}
+  m_GameObject: {fileID: 521575416172460354}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a771034bb82cbcd4b8c63ca549f8e689, type: 3}
-  m_Color: {r: 0.8113208, g: 0.7296662, b: 0.12552504, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -83,19 +83,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6954050323850519399
+--- !u!114 &-1277533830579697871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4427455901919146163}
+  m_GameObject: {fileID: 521575416172460354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481e4f4b191b0ed46817c13728d0a9f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 19c73386d6a368447955b534e663da8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReqiured: 2
-  woodRequired: 2
-  attackProjecttile: {fileID: 521575416172460354, guid: 79b4158943de0a24dbe033393c7b0854, type: 3}
-  range: 5
+  speed: 10
+  damage: 1

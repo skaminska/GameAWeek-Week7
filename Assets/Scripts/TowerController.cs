@@ -6,6 +6,47 @@ public class TowerController : MonoBehaviour
 {
     [SerializeField] int goldReqiured;
     [SerializeField] int woodRequired;
+    [SerializeField] GameObject attackProjecttile;
+    [SerializeField] float range;
+
+    GameObject currentEnemy;
+    float timeToAttack;
+
+    private void Update()
+    {
+        if (timeToAttack > 0)
+            timeToAttack -= Time.deltaTime;
+        if (currentEnemy != null)
+        {
+            if (Vector3.Distance(transform.position, currentEnemy.transform.position) > range)
+                currentEnemy = null;
+            if (timeToAttack <= 0)
+            {
+                Attack();
+                timeToAttack = 1;
+            }
+
+        }
+        else
+        {
+            foreach(var enemy in EnemyController.Instance.enemiesList)
+            {
+                if(Vector3.Distance(transform.position, enemy.transform.position) <= range)
+                {
+                    currentEnemy = enemy;
+                }
+            }
+        }
+            
+    }
+
+
+
+    void Attack()
+    {
+        GameObject attProj = Instantiate(attackProjecttile, transform.position, Quaternion.identity);
+        attProj.GetComponent<AttackingElementsMovement>().SetTarget(currentEnemy);
+    }
 
     public bool CheckIfRequirements()
     {

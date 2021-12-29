@@ -28,6 +28,7 @@ public class PlacementController : Singleton<PlacementController>
             {
                 Destroy(bsInstance);
                 placement.GetComponent<SpriteRenderer>().enabled = false;
+                placement.SetActive(false);
                 this.enabled = false;
             }
 

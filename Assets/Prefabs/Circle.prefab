@@ -97,9 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypes:
   - {fileID: 4427455901919146163, guid: 085240fb978a2624ebae10f856df1a42, type: 3}
-  - {fileID: 5916139698484644871, guid: 8201fa28cfd0a7b4fbebea76d06830a1, type: 3}
-  - {fileID: 2692958100273303913, guid: 8eda014a4b5355144b984b18e06447f4, type: 3}
   buildingSprite:
   - {fileID: 21300000, guid: a771034bb82cbcd4b8c63ca549f8e689, type: 3}
-  - {fileID: 21300000, guid: 54a501ad7dbee924b9dafed74264b518, type: 3}
-  - {fileID: 21300000, guid: bf47d083b8df8114cbd8dd6543a22c14, type: 3}
