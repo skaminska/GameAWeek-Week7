@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Singleton<PlayerController>, IGetDamage
 {
@@ -21,9 +22,11 @@ public class PlayerController : Singleton<PlayerController>, IGetDamage
     [SerializeField] public int newWarriorRequireGold;
     [SerializeField] public int newWarriorRequireFood;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Update()
     {
+        if(healthPoints <=0)
+            SceneManager.LoadScene(2);
     }
 
     internal void RemoveFromWork(Resource resource)

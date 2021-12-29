@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481e4f4b191b0ed46817c13728d0a9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReqiured: 2
-  woodRequired: 2
+  goldReqiured: 10
+  woodRequired: 10
   attackProjecttile: {fileID: 521575416172460354, guid: 79b4158943de0a24dbe033393c7b0854, type: 3}
-  range: 5
+  range: 4

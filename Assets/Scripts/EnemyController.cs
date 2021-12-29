@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyController : Singleton<EnemyController>, IGetDamage
 {
     [SerializeField] List<Transform> path;
     [SerializeField] GameObject enemy;
     [SerializeField] int healthPoints;
+    [SerializeField] Slider timeSlider; 
 
     [SerializeField] public List<GameObject> enemiesList;
 
     [SerializeField] float timeToNewWave;
     int enemyInWave;
 
+    public bool wave;
+
     private void Start()
     {
+        wave = false;
         enemyInWave = 3;
     }
 
@@ -23,16 +29,17 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
     void Update()
     {
         timeToNewWave -= Time.deltaTime;
-        if(timeToNewWave <= 0)
+        timeSlider.value = timeToNewWave;
+
+        if(timeToNewWave <= 0 && !wave)
         {
-            timeToNewWave = 30;
+            wave = true;
             StartCoroutine(SpawnEnemy());
         }
 
         if (healthPoints < 0)
         {
-            Debug.Log("You Win");
-            Destroy(this);
+            SceneManager.LoadScene(1);
         }
 
     }
@@ -49,6 +56,13 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
             enemiesList.Add(enemyCon);
         }
         enemyInWave += 2;
+    }
+
+    public void WaveDefete()
+    {
+        timeToNewWave = 30;
+        timeSlider.value = timeToNewWave;
+        wave = false;
     }
 
     public void GetDamage(int damage)

@@ -61,6 +61,8 @@ public class EnemyMovement : MonoBehaviour
         if (healthPoint <= 0)
         {
             EnemyController.Instance.enemiesList.Remove(this.gameObject);
+            if (EnemyController.Instance.enemiesList.Count == 0)
+                EnemyController.Instance.WaveDefete();
             Destroy(gameObject);
         }
     }
