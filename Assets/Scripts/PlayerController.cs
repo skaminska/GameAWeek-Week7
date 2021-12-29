@@ -9,6 +9,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] public int gold;
     [SerializeField] public int food;
     [SerializeField] List<WorkerController> workers;
+    [SerializeField] List<WorkerController> warriors;
     [SerializeField] GameObject workerPref;
 
     [SerializeField] public int newWorkerRequireGold;
@@ -61,6 +62,11 @@ public class PlayerController : Singleton<PlayerController>
                 collision.gameObject.GetComponent<WorkerController>().LeftResource();
             }
         }
+    }
+
+    public List<string> UpdateInfo()
+    {
+        return new List<string> { workers.Count.ToString(), warriors.Count.ToString(), gold.ToString(), food.ToString(), wood.ToString() };
     }
 
     public void BuyNewWorker()

@@ -24,10 +24,13 @@ public class PlacementController : Singleton<PlacementController>
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            bsInstance.GetComponent<BuildingShiluetController>().BuildThis();
-            Destroy(bsInstance);
-            placement.GetComponent<SpriteRenderer>().enabled = false;
-            this.enabled = false;
+            if (bsInstance.GetComponent<BuildingShiluetController>().BuildThis())
+            {
+                Destroy(bsInstance);
+                placement.GetComponent<SpriteRenderer>().enabled = false;
+                this.enabled = false;
+            }
+
         }
     }
 

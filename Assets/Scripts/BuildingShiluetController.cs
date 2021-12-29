@@ -39,8 +39,16 @@ public class BuildingShiluetController : MonoBehaviour
         spriteRenderer.sprite = buildingSprite[currentBuilding];
     }
 
-    public void BuildThis()
+    public bool BuildThis()
     {
-        Instantiate(buildingTypes[currentBuilding], transform.position, Quaternion.identity);
+        if (buildingTypes[currentBuilding].GetComponent<TowerController>().CheckIfRequirements())
+        {
+            Instantiate(buildingTypes[currentBuilding], transform.position, Quaternion.identity);
+            buildingTypes[currentBuilding].GetComponent<TowerController>().BuildThisTower();
+            return true;
+        }
+        else
+            Debug.Log("Brak ci czegoœ");
+        return false;
     }
 }

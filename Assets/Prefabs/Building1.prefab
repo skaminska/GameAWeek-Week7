@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8251432539967776738}
   - component: {fileID: 7996778109112429398}
+  - component: {fileID: -6954050323850519399}
   m_Layer: 0
   m_Name: Building1
   m_TagString: Untagged
@@ -82,3 +83,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6954050323850519399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427455901919146163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481e4f4b191b0ed46817c13728d0a9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldReqiured: 2
+  woodRequired: 2
