@@ -15,8 +15,8 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
     [SerializeField] public List<GameObject> enemiesList;
 
     [SerializeField] float timeToNewWave;
-    int enemyInWave;
 
+    int enemyInWave;
     public bool wave;
 
     private void Start()
@@ -25,8 +25,6 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
         enemyInWave = 3;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         timeToNewWave -= Time.deltaTime;
@@ -42,7 +40,6 @@ public class EnemyController : Singleton<EnemyController>, IGetDamage
         {
             SceneManager.LoadScene(1);
         }
-
     }
 
     IEnumerator SpawnEnemy()

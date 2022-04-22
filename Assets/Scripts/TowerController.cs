@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    [SerializeField] int goldReqiured;
-    [SerializeField] int woodRequired;
+    [SerializeField] public int goldReqiured;
+    [SerializeField] public int woodRequired;
     [SerializeField] GameObject attackProjecttile;
     [SerializeField] float range;
 
@@ -31,12 +31,9 @@ public class TowerController : MonoBehaviour
                 currentEnemy = null;
             if (timeToAttack <= 0)
             {
-
-
                 Attack();
                 timeToAttack = 1;
             }
-
         }
         else
         {
@@ -48,10 +45,7 @@ public class TowerController : MonoBehaviour
                 }
             }
         }
-            
     }
-
-
 
     void Attack()
     {

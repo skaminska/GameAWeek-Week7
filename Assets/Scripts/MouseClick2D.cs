@@ -8,7 +8,6 @@ public class MouseClick2D : Singleton<MouseClick2D>
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject menu;
 
-    // Update is called once per frame
     void Update()
     {
         if (!menu.activeInHierarchy)
@@ -22,7 +21,6 @@ public class MouseClick2D : Singleton<MouseClick2D>
                 CheckIfResourceToRemoveWorker();
             }
         }
-
     }
 
     private void CheckIfResourceToRemoveWorker()
@@ -50,7 +48,6 @@ public class MouseClick2D : Singleton<MouseClick2D>
             }
             else if (hit.collider.gameObject.tag == "Placement" && !PlacementController.Instance.isActiveAndEnabled)
             {
-                //hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 PlacementController.Instance.enabled = true;
                 PlacementController.Instance.SetPlacement(hit.collider.gameObject);
             }

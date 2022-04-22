@@ -8,7 +8,7 @@ public class PlacementController : Singleton<PlacementController>
 
     GameObject placement;
     GameObject bsInstance;
-    // Start is called before the first frame update
+
     void Start()
     {
         this.enabled = false;   
@@ -31,17 +31,12 @@ public class PlacementController : Singleton<PlacementController>
                 placement.SetActive(false);
                 this.enabled = false;
             }
-
         }
     }
 
-
     public void SetPlacement(GameObject placement)
     {
-        
         bsInstance = Instantiate(buildingShiluet, placement.transform.position, Quaternion.identity);
-        this.placement = placement;
-        //placement.GetComponent<SpriteRenderer>().enabled = false;
-        
+        this.placement = placement;        
     }
 }

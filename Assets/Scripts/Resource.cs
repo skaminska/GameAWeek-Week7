@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-    //public int resourceLeft;
+    public enum ResourceType { WOOD, GOLD, FOOD};
+
     [SerializeField] TextMeshProUGUI currentWorkersText;
+    [SerializeField] public ResourceType resourceType;
+
     int currentWorkers;
 
     private void Start()
     {
         currentWorkers = 0;
     }
-
-    public enum ResourceType { WOOD, GOLD, FOOD};
-
-    [SerializeField] public ResourceType resourceType;
 
     public void AddWorker()
     {
@@ -32,5 +31,4 @@ public class Resource : MonoBehaviour
             currentWorkersText.text = currentWorkers.ToString();
         }
     }
-
 }

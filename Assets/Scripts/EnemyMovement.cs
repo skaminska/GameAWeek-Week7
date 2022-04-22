@@ -10,12 +10,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] GameObject arrow;
 
     [SerializeField] float range;
-    GameObject target;
 
+    GameObject target;
     GameObject fort;
 
     float timeToAttack;
-
     public int pointAchive;
 
 
@@ -27,7 +26,6 @@ public class EnemyMovement : MonoBehaviour
         fort = FindObjectOfType<PlayerController>().gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timeToAttack > 0)
@@ -47,16 +45,12 @@ public class EnemyMovement : MonoBehaviour
 
             if (Vector3.Distance(fort.transform.position, transform.position) < range+2)
                 target = fort;
-
-
         }
-
         else if (target != null && timeToAttack <= 0)
         {
             Attack();
             timeToAttack = 1f;
         }
-
 
         if (healthPoint <= 0)
         {

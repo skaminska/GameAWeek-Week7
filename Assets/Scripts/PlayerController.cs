@@ -18,13 +18,11 @@ public class PlayerController : Singleton<PlayerController>, IGetDamage
     [SerializeField] int healthPoints;
     [SerializeField] Slider hpSlider;
 
-
     [SerializeField] public int newWorkerRequireGold;
     [SerializeField] public int newWorkerRequireFood;
 
     [SerializeField] public int newWarriorRequireGold;
     [SerializeField] public int newWarriorRequireFood;
-
 
     private void Update()
     {
@@ -69,7 +67,6 @@ public class PlayerController : Singleton<PlayerController>, IGetDamage
             gold -= newWarriorRequireGold;
             food -= newWarriorRequireFood;
 
-
             GameObject warrior = Instantiate(warriorPref, transform.position, Quaternion.identity);
             warrior.GetComponent<WarriorController>().SetPath(warriorsPath);
             warriors.Add(warrior.GetComponent<WarriorController>());
@@ -98,7 +95,6 @@ public class PlayerController : Singleton<PlayerController>, IGetDamage
         {
             gold -= newWorkerRequireGold;
             food -= newWorkerRequireFood;
-
 
             GameObject worker = Instantiate(workerPref, transform.position, Quaternion.identity);
             worker.GetComponent<WorkerController>().fort = this.transform;

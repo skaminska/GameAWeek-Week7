@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BuildingShiluetController : MonoBehaviour
 {
     [SerializeField] List<GameObject> buildingTypes;
     [SerializeField] List<Sprite> buildingSprite;
+    [SerializeField] TextMeshProUGUI reqInfo;
 
     int currentBuilding;
     SpriteRenderer spriteRenderer;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentBuilding = 0;
         spriteRenderer.sprite = buildingSprite[currentBuilding];
+        reqInfo = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
@@ -37,6 +40,14 @@ public class BuildingShiluetController : MonoBehaviour
         }
 
         spriteRenderer.sprite = buildingSprite[currentBuilding];
+        reqInfo.text = "Wood: " + buildingTypes[currentBuilding].GetComponent<TowerController>().woodRequired + "\nGold: " + buildingTypes[currentBuilding].GetComponent<TowerController>().goldReqiured;
+
+        if (!buildingTypes[currentBuilding].GetComponent<TowerController>().CheckIfRequirements())
+        {
+            spriteRenderer.color = Color.red;
+        }
+        else
+            spriteRenderer.color = Color.white;
     }
 
     public bool BuildThis()

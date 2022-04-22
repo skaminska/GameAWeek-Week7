@@ -22,8 +22,6 @@ public class UIController : MonoBehaviour
     {
         if (citizensMenu.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             citizensMenu.SetActive(false);
-
-
     }
     
     void UpdateUIInfo()

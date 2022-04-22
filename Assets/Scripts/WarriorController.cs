@@ -17,7 +17,6 @@ public class WarriorController : MonoBehaviour, IGetDamage
     GameObject target;
     GameObject fort;
 
-    // Start is called before the first frame update
     void Start()
     {
         range = 3f;
@@ -26,7 +25,6 @@ public class WarriorController : MonoBehaviour, IGetDamage
         fort = FindObjectOfType<EnemyController>().gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (attack)
@@ -48,8 +46,6 @@ public class WarriorController : MonoBehaviour, IGetDamage
 
                 if (Vector3.Distance(fort.transform.position, transform.position) < range+1)
                     target = fort;
-
-
             }
 
             else if(target!= null && timeToAttack <= 0)
@@ -57,7 +53,6 @@ public class WarriorController : MonoBehaviour, IGetDamage
                 Attack();
                 timeToAttack = 1;
             }
-
 
             if (healthPoint <= 0)
             {

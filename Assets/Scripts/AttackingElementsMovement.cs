@@ -10,10 +10,8 @@ public class AttackingElementsMovement : MonoBehaviour
     GameObject target;
     Vector3 targetPos;
 
-    // Update is called once per frame
     void Update()
     {
-        
         if (target != null)
         {
             targetPos = target.transform.position;
@@ -28,13 +26,10 @@ public class AttackingElementsMovement : MonoBehaviour
             {
                 if (target.GetComponent<WarriorController>() != null)
                     target.GetComponent<WarriorController>().GetDamage(damage);
-
                 else if (target.GetComponent<PlayerController>() != null)
                     target.GetComponent<PlayerController>().GetDamage(damage);
-
                 else if (target.GetComponent<EnemyController>() != null)
                     target.GetComponent<EnemyController>().GetDamage(damage);
-
                 else if (target.GetComponent<EnemyMovement>() != null)
                     target.GetComponent<EnemyMovement>().GetDamage(damage);
                 Destroy(gameObject);
@@ -48,12 +43,10 @@ public class AttackingElementsMovement : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
     }
 
     public void SetTarget(GameObject target)
     {
         this.target = target;
-        
     }
 }

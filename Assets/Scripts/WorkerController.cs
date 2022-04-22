@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class WorkerController : MonoBehaviour
 {
+    [SerializeField] string resourceInInventory;
+    [SerializeField] public Transform fort;
+
     public bool busy;
     Resource currentResource;
     bool gatheringResources;
     bool removeFromWork;
-
     public bool unpackingResource;
 
-    [SerializeField] string resourceInInventory;
-    [SerializeField] public Transform fort;
-
-
-    // Start is called before the first frame update
     void Start()
     {
         removeFromWork = false;
@@ -36,9 +33,7 @@ public class WorkerController : MonoBehaviour
             busy = false;
 
         if (transform.position == fort.position && resourceInInventory != null)
-        {
             StartCoroutine(LeftResource());
-        }
 
         if(!busy)
             transform.position = Vector2.MoveTowards(transform.position, fort.transform.position, 3 * Time.deltaTime);
@@ -48,7 +43,6 @@ public class WorkerController : MonoBehaviour
             gatheringResources = true;
             StartCoroutine(CollectResource());
         }
-           
     }
 
     public IEnumerator LeftResource()
